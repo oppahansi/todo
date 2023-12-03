@@ -43,15 +43,10 @@ class _AddTodoSheetState extends ConsumerState<AddTodoSheet> {
           children: [
             const Text(
               "Add new todo.",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             TextFormField(
-              decoration: const InputDecoration(
-                labelText: "Title",
-              ),
+              decoration: const InputDecoration(labelText: "Title"),
               controller: _titleController,
               keyboardType: TextInputType.name,
               maxLength: 50,
@@ -68,9 +63,7 @@ class _AddTodoSheetState extends ConsumerState<AddTodoSheet> {
             ),
             const SizedBox(height: 16),
             TextFormField(
-              decoration: const InputDecoration(
-                labelText: "Description",
-              ),
+              decoration: const InputDecoration(labelText: "Description"),
               controller: _descriptionController,
               keyboardType: TextInputType.multiline,
               minLines: 3,

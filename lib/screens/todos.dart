@@ -11,9 +11,7 @@ class TodosScreen extends ConsumerWidget {
     showModalBottomSheet<void>(
       isScrollControlled: true,
       context: context,
-      builder: (context) {
-        return const AddTodoSheet();
-      },
+      builder: (context) => const AddTodoSheet(),
     );
   }
 
@@ -44,14 +42,10 @@ class TodosScreen extends ConsumerWidget {
                   ref.read(todosProvider.notifier).removeTodo(todo),
               child: ExpansionTile(
                 shape: const ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
                 collapsedShape: const ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
                 backgroundColor: todo.color.withOpacity(0.25),
                 collapsedBackgroundColor: todo.color.withOpacity(0.25),
@@ -61,9 +55,7 @@ class TodosScreen extends ConsumerWidget {
                 trailing: IconButton(
                   onPressed: () =>
                       ref.read(todosProvider.notifier).removeTodo(todo),
-                  icon: const Icon(
-                    Icons.delete,
-                  ),
+                  icon: const Icon(Icons.delete),
                 ),
                 children: [
                   Text(todo.description),
