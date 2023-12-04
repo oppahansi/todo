@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:oppa_todo/models/status.dart';
 import 'package:oppa_todo/models/todo.dart';
+import 'package:oppa_todo/providers/filter.dart';
 
 List<Todo> _todos = [
   Todo(
@@ -78,12 +79,35 @@ class TodosNotifier extends Notifier<List<Todo>> {
     state = [...state, todo];
   }
 
-  removeTodo(Todo todo) {
+  void removeTodo(Todo todo) {
     state = [
       ...state.where((element) => element != todo),
     ];
+  }
+
+  void updateTodo(Todo todo) {
+    var index = state.indexOf(todo);
+    state[index] = todo;
+
+    state = [...state];
   }
 }
 
 final todosProvider =
     NotifierProvider<TodosNotifier, List<Todo>>(TodosNotifier.new);
+
+final filteredTodosProvider = Provider((ref) {
+  final filter = ref.watch(todoFilterProvider);
+  final todos = ref.watch(todosProvider);
+
+  switch (filter) {
+    case Status.active:
+      return todos.where((element) => element.status == Status.active).toList();
+    case Status.completed:
+      return todos
+          .where((element) => element.status == Status.completed)
+          .toList();
+    case Status.none:
+      return todos.where((element) => element.status == Status.none).toList();
+  }
+});

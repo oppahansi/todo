@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:oppa_todo/models/status.dart';
 import 'package:oppa_todo/models/todo.dart';
 import 'package:oppa_todo/providers/todos.dart';
 import 'package:oppa_todo/widgets/add_todo_sheet.dart';
+import 'package:oppa_todo/widgets/bottom_navigation.dart';
+import 'package:oppa_todo/widgets/todo_item.dart';
 
 class TodosScreen extends ConsumerWidget {
   const TodosScreen({super.key});
@@ -17,7 +20,7 @@ class TodosScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var todos = ref.watch(todosProvider);
+    var todos = ref.watch(filteredTodosProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -29,6 +32,7 @@ class TodosScreen extends ConsumerWidget {
           ),
         ],
       ),
+      bottomNavigationBar: const BottomNavigation(),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: ListView.builder(
@@ -38,29 +42,16 @@ class TodosScreen extends ConsumerWidget {
 
             return Dismissible(
               key: ValueKey(todo.id),
-              onDismissed: (value) =>
-                  ref.read(todosProvider.notifier).removeTodo(todo),
-              child: ExpansionTile(
-                shape: const ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                ),
-                collapsedShape: const ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                ),
-                backgroundColor: todo.color.withOpacity(0.25),
-                collapsedBackgroundColor: todo.color.withOpacity(0.25),
-                childrenPadding: const EdgeInsets.only(bottom: 16),
-                leading: Icon(Icons.square, color: todo.color),
-                title: Text(todo.title),
-                trailing: IconButton(
-                  onPressed: () =>
-                      ref.read(todosProvider.notifier).removeTodo(todo),
-                  icon: const Icon(Icons.delete),
-                ),
-                children: [
-                  Text(todo.description),
-                ],
-              ),
+              onDismissed: (value) {
+                if (todo.status == Status.none) {
+                  ref.read(todosProvider.notifier).removeTodo(todo);
+                  return;
+                }
+
+                todo.status = Status.none;
+                ref.read(todosProvider.notifier).updateTodo(todo);
+              },
+              child: TodoItem(todo),
             );
           },
         ),

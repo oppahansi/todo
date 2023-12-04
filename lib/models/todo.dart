@@ -8,13 +8,13 @@ class Todo {
   final String id;
   final String title;
   final String description;
-  final Status status;
   final Color color;
+  Status status;
 
   Todo({
     required this.title,
     required this.description,
-    required this.status,
     required this.color,
+    this.status = Status.active,
   }) : id = uuid.v4();
 }
