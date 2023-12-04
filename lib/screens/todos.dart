@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:oppa_todo/models/status.dart';
-import 'package:oppa_todo/models/todo.dart';
-import 'package:oppa_todo/providers/todos.dart';
-import 'package:oppa_todo/widgets/add_todo_sheet.dart';
-import 'package:oppa_todo/widgets/bottom_navigation.dart';
-import 'package:oppa_todo/widgets/todo_item.dart';
+import 'package:oppa_todo/models/models.dart';
+import 'package:oppa_todo/providers/providers.dart';
+import 'package:oppa_todo/widgets/widgets.dart';
 
 class TodosScreen extends ConsumerWidget {
   const TodosScreen({super.key});
