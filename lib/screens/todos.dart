@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:oppa_todo/models/models.dart';
-import 'package:oppa_todo/providers/providers.dart';
-import 'package:oppa_todo/widgets/widgets.dart';
+import '../models/models.dart';
+import '../providers/providers.dart';
+import '../widgets/widgets.dart';
 
 class TodosScreen extends ConsumerWidget {
   const TodosScreen({super.key});

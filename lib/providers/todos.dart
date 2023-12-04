@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:oppa_todo/models/models.dart';
-import 'package:oppa_todo/providers/filter.dart';
+import '../models/models.dart';
+import 'filter.dart';
 
 List<Todo> _todos = [
   Todo(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oppa_todo/models/status.dart';
+import 'status.dart';
 import 'package:uuid/uuid.dart';
 
 const uuid = Uuid();
