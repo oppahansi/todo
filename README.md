@@ -6,7 +6,7 @@ A simple TODO app to practice, dart, flutter and the flutter_riverpod statemanag
 
 <p float="left">
   <img src="https://i.imgur.com/PgKPGaA.png" width="25%" />
-  <img src="https://i.imgur.com/HZI10ez.png" width="25%" />
-  <img src="https://i.imgur.com/y7ouvUg.png" width="25%" />
+  <img src="https://i.imgur.com/kDcVuJD.png" width="25%" />
+  <img src="https://i.imgur.com/qyHf3M9.png" width="25%" />
   <img src="https://i.imgur.com/A2TTsUf.png" width="25%" />
 </p>
