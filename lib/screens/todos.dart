@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import '../models/models.dart';
+import '../constants/constants.dart';
 import '../providers/providers.dart';
 import '../widgets/widgets.dart';
 
@@ -20,43 +20,41 @@ class TodosScreen extends ConsumerWidget {
     );
   }
 
+  Widget _themeToggleButton(ThemeMode themeMode) {
+    if (themeMode == ThemeMode.dark) {
+      return const Icon(Icons.light_mode);
+    } else {
+      return const Icon(Icons.dark_mode);
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var todos = ref.watch(filteredTodosProvider);
+    final themeMode = ref.watch(themeModeProvider);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("TODOs"),
-        actions: [
-          IconButton(
-            onPressed: () => _addTodo(context),
-            icon: const Icon(Icons.add),
-          ),
-        ],
-      ),
-      bottomNavigationBar: const BottomNavigation(),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: ListView.builder(
-          itemCount: todos.length,
-          itemBuilder: (ctx, index) {
-            Todo todo = todos[index];
-
-            return Dismissible(
-              key: ValueKey(todo.id),
-              onDismissed: (value) {
-                if (todo.status == Status.none) {
-                  ref.read(todosProvider.notifier).removeTodo(todo);
-                  return;
-                }
-
-                todo.status = Status.none;
-                ref.read(todosProvider.notifier).updateTodo(todo);
-              },
-              child: TodoItem(todo),
-            );
-          },
+    return MaterialApp(
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: themeMode,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("TODOs"),
+          actions: [
+            IconButton(
+              onPressed: () => ref.read(themeModeProvider.notifier).state =
+                  themeMode == ThemeMode.dark
+                      ? ThemeMode.light
+                      : ThemeMode.dark,
+              icon: _themeToggleButton(themeMode),
+            ),
+            IconButton(
+              onPressed: () => _addTodo(context),
+              icon: const Icon(Icons.add),
+            ),
+          ],
         ),
+        bottomNavigationBar: const BottomNavigation(),
+        body: const TodoList(),
       ),
     );
   }
