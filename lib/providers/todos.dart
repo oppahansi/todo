@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import '../models/models.dart';
+import '../models/models.dart' show Status, Todo;
 import 'filter.dart';
 
 List<Todo> _todos = [

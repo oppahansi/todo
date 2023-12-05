@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import '../constants/constants.dart';
-import '../providers/providers.dart';
-import '../widgets/widgets.dart';
+import '../providers/providers.dart' show themeModeProvider;
+import '../widgets/widgets.dart' show AddTodoSheet, BottomNavigation, TodoList;
 
 class TodosScreen extends ConsumerWidget {
   const TodosScreen({super.key});
@@ -32,30 +31,23 @@ class TodosScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
 
-    return MaterialApp(
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: themeMode,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("TODOs"),
-          actions: [
-            IconButton(
-              onPressed: () => ref.read(themeModeProvider.notifier).state =
-                  themeMode == ThemeMode.dark
-                      ? ThemeMode.light
-                      : ThemeMode.dark,
-              icon: _themeToggleButton(themeMode),
-            ),
-            IconButton(
-              onPressed: () => _addTodo(context),
-              icon: const Icon(Icons.add),
-            ),
-          ],
-        ),
-        bottomNavigationBar: const BottomNavigation(),
-        body: const TodoList(),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("TODOs"),
+        actions: [
+          IconButton(
+            onPressed: () => ref.read(themeModeProvider.notifier).state =
+                themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark,
+            icon: _themeToggleButton(themeMode),
+          ),
+          IconButton(
+            onPressed: () => _addTodo(context),
+            icon: const Icon(Icons.add),
+          ),
+        ],
       ),
+      bottomNavigationBar: const BottomNavigation(),
+      body: const TodoList(),
     );
   }
 }

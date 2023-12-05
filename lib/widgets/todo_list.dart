@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import '../models/models.dart';
-import '../providers/providers.dart';
+import '../models/models.dart' show Todo, Status;
+import '../providers/providers.dart' show filteredTodosProvider, todosProvider;
 import 'todo_item.dart';
 
 class TodoList extends ConsumerWidget {
