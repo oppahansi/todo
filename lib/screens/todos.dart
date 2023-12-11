@@ -1,10 +1,10 @@
-// Flutter imports:
+// Flutter Imports
 import 'package:flutter/material.dart';
 
-// Package imports:
+// Package Imports
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// Project imports:
+// Relative Project Imports
 import '../providers/providers.dart' show themeModeProvider;
 import '../widgets/widgets.dart' show AddTodoSheet, BottomNavigation, TodoList;
 

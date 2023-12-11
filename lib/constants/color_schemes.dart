@@ -1,4 +1,4 @@
-// Flutter imports:
+// Flutter Imports
 import 'package:flutter/material.dart';
 
 final colorSchemeDark = ColorScheme.fromSeed(

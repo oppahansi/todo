@@ -1,7 +1,7 @@
-// Flutter imports:
+// Flutter Imports
 import 'package:flutter/material.dart';
 
-// Package imports:
+// Package Imports
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final themeModeProvider = StateProvider<ThemeMode>((ref) {

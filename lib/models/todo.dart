@@ -1,10 +1,10 @@
-// Flutter imports:
+// Flutter Imports
 import 'package:flutter/material.dart';
 
-// Package imports:
+// Package Imports
 import 'package:uuid/uuid.dart';
 
-// Project imports:
+// Relative Project Imports
 import 'status.dart';
 
 const uuid = Uuid();

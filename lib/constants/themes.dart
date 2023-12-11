@@ -1,7 +1,7 @@
-// Flutter imports:
+// Flutter Imports
 import 'package:flutter/material.dart';
 
-// Project imports:
+// Relative Project Imports
 import 'color_schemes.dart';
 
 var darkTheme = ThemeData(
