@@ -1,7 +1,5 @@
 // Flutter Imports
 import 'package:flutter/material.dart';
-
-// Package Imports
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Relative Project Imports

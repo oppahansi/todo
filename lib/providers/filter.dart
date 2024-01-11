@@ -1,4 +1,4 @@
-// Package Imports
+// Flutter Imports
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Relative Project Imports
